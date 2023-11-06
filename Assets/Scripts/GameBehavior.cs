@@ -26,15 +26,22 @@ public class GameBehavior : MonoBehaviour
 
     public PlayerBehavior player;
 
+    
+
     public GameObject Asteroid;
+    public GameObject Asteroid_2;
     public float AsteroidSpeed = 50.0f;
     public int AsteroidCount = 0;
     public float LaunchMultiplier = 1;
 
+    public int bulletDamage = 1;
+
     public bool _isDead;
+    public bool powerUpPresent;
 
     AudioSource _source;
     [SerializeField] AudioClip Asteroid_Destroy;
+    [SerializeField] AudioClip Fragment_Destroy;
     [SerializeField] AudioClip Pause_Thud;
 
     private void Awake()
@@ -66,14 +73,14 @@ public class GameBehavior : MonoBehaviour
             pauseMessage.enabled = !pauseMessage.enabled;
         }
 
-        if (Instance.State == GameStates.Play && AsteroidCount <= 5)
+        if (Instance.State == GameStates.Play && AsteroidCount <= 10)
         {
             float _pos1 = Random.Range(0.0f, 1.0f);
             float _pos2 = Random.Range(0.0f, 1.0f);
 
             GameObject newAsteroid = Instantiate(Asteroid, new Vector3(_pos1 >= 0.5f ? (_pos2 >= 0.5f ? 7 : -7) : Random.Range(-5, 5), _pos1 >= 0.5f ? Random.Range(-4.3f, 4.3f) : (_pos2 >= 0.5f ? 5 : -5), 0), new Quaternion(0, 0, 0, 0)) ;
 
-            AsteroidCount += 1;
+            AsteroidCount += 2;
 
             //Rigidbody2D AsteroidRB = newAsteroid.GetComponent<Rigidbody2D>();
 
@@ -93,13 +100,30 @@ public class GameBehavior : MonoBehaviour
             _isDead = true;
             Time.timeScale = 0.0f;
         }
-
+        
     }
 
-    public void UpdateScore()
+    public void UpdateScore(int size)
     {
         player.Score += 1;
-        _source.PlayOneShot(Asteroid_Destroy);
-        LaunchMultiplier += 0.1f;
+        if (size == 0)
+        {
+            _source.PlayOneShot(Asteroid_Destroy);
+        }
+        else
+        {
+            _source.PlayOneShot(Fragment_Destroy);
+        }
+            
+        LaunchMultiplier += 0.03f;
+    }
+
+    public void Fragment(Vector3 spawnPosition, Quaternion spawnRotation, Vector2 initVelocity)
+    {
+        GameObject AsteroidFragment1 = Instantiate(Asteroid_2, spawnPosition + new Vector3(0, 0.2f, 0), spawnRotation);
+        GameObject AsteroidFragment2 = Instantiate(Asteroid_2, spawnPosition + new Vector3(0.2f, 0, 0), spawnRotation);
+        AsteroidFragment1.GetComponent<Rigidbody2D>().velocity = initVelocity;
+        AsteroidFragment2.GetComponent<Rigidbody2D>().velocity = initVelocity * -1;
+        AsteroidCount += 1;
     }
 }

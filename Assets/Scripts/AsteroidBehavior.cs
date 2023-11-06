@@ -8,6 +8,8 @@ public class AsteroidBehavior : MonoBehaviour
     public float AsteroidHealth;
     public Rigidbody2D AsteroidRB;
 
+    GameObject Fragment;
+
     AudioSource _source;
     [SerializeField] AudioClip AsteroidExplosion;
     [SerializeField] AudioClip AsteroidHit;
@@ -31,14 +33,17 @@ public class AsteroidBehavior : MonoBehaviour
         if(AsteroidHealth <= 0)
         {
             Destroy(gameObject);
-            GameBehavior.Instance.AsteroidCount -= 1;
-            GameBehavior.Instance.UpdateScore();
+            GameBehavior.Instance.AsteroidCount -= 2;
+            GameBehavior.Instance.UpdateScore(0);
+
+            GameBehavior.Instance.Fragment(this.transform.position, this.transform.rotation, AsteroidRB.velocity);
+            Debug.LogFormat($"{GameBehavior.Instance.AsteroidCount}");
 
         }
         else if(Mathf.Abs(transform.position.x) >= 8 | Mathf.Abs(transform.position.y) >= 7)
         {
             Destroy(gameObject);
-            GameBehavior.Instance.AsteroidCount -= 1;
+            GameBehavior.Instance.AsteroidCount -= 2;
         }
     }
 
@@ -46,7 +51,7 @@ public class AsteroidBehavior : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
-            AsteroidHealth -= 1;
+            AsteroidHealth -= GameBehavior.Instance.bulletDamage;
             Debug.Log("Hit!");
             gameObject.GetComponent<Material>();
             _source.volume = 0.2f;

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6402721556298337940}
   - component: {fileID: 2589948809886680678}
   - component: {fileID: 8047083048788351658}
-  - component: {fileID: 6955087974967679785}
   - component: {fileID: 7599159915700545952}
   - component: {fileID: 3243782471072235298}
   - component: {fileID: 6537786850377302214}
-  m_Layer: 0
-  m_Name: Asteroid
+  - component: {fileID: 4069484310587789053}
+  m_Layer: 4
+  m_Name: Asteriod 1
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,57 +121,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6955087974967679785
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510673152419908154}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8828125, y: 1}
-    newSize: {x: 0.8828125, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.43359375, y: 0.25}
-      - {x: -0.43359375, y: -0.25}
-      - {x: 0, y: -0.5}
-      - {x: 0.43359375, y: -0.25}
-      - {x: 0.43359375, y: 0.25}
-      - {x: 0.003397571, y: 0.5067954}
-  m_UseDelaunayMesh: 0
 --- !u!114 &7599159915700545952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +254,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &4069484310587789053
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510673152419908154}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.027745124, y: 0.012665526}
+  serializedVersion: 2
+  m_Radius: 0.5398835
 --- !u!1 &1764231676562160623
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3614171328939884082}
   - component: {fileID: 872512066720968373}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Angles 1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8021746185478602409}
   - component: {fileID: 2565364996061239282}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Angles 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9197949533473312301}
   - component: {fileID: 3174135042001984128}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Angles 1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +551,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7157421376248319480}
   - component: {fileID: 3426435751307321736}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Angles 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -651,7 +635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4131175492314434556}
   - component: {fileID: 7346556515644322471}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Angles 1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
